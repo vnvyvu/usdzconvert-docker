@@ -8,7 +8,7 @@ ARG CMAKE_VER=v3.14.6
 RUN apt-get -qq update && apt-get install -y && apt-get install -y \
     git build-essential nasm zlib1g-dev sudo \
     libssl-dev libffi-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev 
-    
+
 
 #install cmake
 WORKDIR /home/tmp/cmake
@@ -46,7 +46,7 @@ RUN git clone --branch "${USD_RELEASE}" --depth 1 https://github.com/PixarAnimat
 
 
 RUN python ./build_scripts/build_usd.py --no-examples --no-tutorials --no-imaging --no-usdview --no-draco "${USD_INSTALL}" && \
-  rm -rf "${USD_REPO}" "${USD_INSTALL}/build" "${USD_INSTALL}/src"
+    rm -rf "${USD_REPO}" "${USD_INSTALL}/build" "${USD_INSTALL}/src"
 
 
 
@@ -89,10 +89,10 @@ RUN true \
 
 RUN python -m pip install numpy
 
-COPY usdzconvert /home/usdzconvert
+COPY usdzconvert /gac/usdzconvert
 COPY --from=build /usr/local/usd /usr/local/usd
 ARG USD_INSTALL="/usr/local/usd"
 ENV PYTHONPATH="${PYTHONPATH}:${USD_INSTALL}/lib/python"
 ENV PATH="${PATH}:${USD_INSTALL}/bin"
 
-ENTRYPOINT [ "/home/usdzconvert/usdzconvert" ]
+ENTRYPOINT [ "/gac/usdzconvert" ]
