@@ -69,7 +69,6 @@ RUN true \
 RUN true \
     && apt-get update \
     && apt-get -y install build-essential libssl-dev zlib1g-dev\
-
     && mkdir -p /home/tmp/python \
     && cd /home/tmp/python \
     && wget -O Python.tgz https://www.python.org/ftp/python/$PYTHON_VER/Python-$PYTHON_VER.tgz  \
