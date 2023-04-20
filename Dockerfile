@@ -94,5 +94,5 @@ ARG USD_INSTALL="/usr/local/usd"
 ENV PYTHONPATH="${PYTHONPATH}:${USD_INSTALL}/lib/python"
 ENV PATH="${PATH}:${USD_INSTALL}/bin"
 
-RUN chmod 777 /gac/usdzconvert
-ENTRYPOINT [ "/gac/usdzconvert" ]
+RUN chmod 777 /gac/usdzconvert/usdzconvert
+ENTRYPOINT [ "/gac/usdzconvert/usdzconvert" ]
