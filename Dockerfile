@@ -86,9 +86,11 @@ RUN true \
     && ldconfig \
     && true
 
+RUN python -m pip install --upgrade pip
 RUN python -m pip install numpy
 
 COPY usdzconvert /home/usdzconvert
+RUN chmod 755 /home/usdzconvert/usdzconvert
 COPY --from=build /usr/local/usd /usr/local/usd
 ARG USD_INSTALL="/usr/local/usd"
 ENV PYTHONPATH="${PYTHONPATH}:${USD_INSTALL}/lib/python"
